@@ -1,45 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LockController : MonoBehaviour
 {
+    
     public bool isLock;
     // public GameObject DestroyObject;
     public GameObject[] lockDot;
-     void Start()
+    LockManager lockManager;
+    PlayerController playerController;
+    void Start()
     {
-        isLock = false;
-        
+         lockManager = GetComponentInParent<LockManager>();
+        isLock = false;     
     }
-
-    void Update()
+     void Update()
     {
-       
-    }
-
-    private void printName(GameObject go)
-    {
-        print(go.name);
-
-    }
-
-    void OnMouseDown()
-    {
-        isLock = true;
         if (isLock)
+           // playerController.dots = lockDot;
+        PlayerController.Instance.dots = lockDot;
+    }
+    void OnMouseDown()
+    {       
+        // Lock mantýðý gelecek.        
+        for (int i = 0; i < lockDot.Length; i++)
         {
-            Destroy(gameObject);
-            for (int i = 0; i < lockDot.Length; i++)
-            {
-                lockDot[i].SetActive(true);
-
-            }
+            lockManager.dotsNew[i] = lockDot[i];
+            
         }
-        // Lock mantýðý gelecek.
-       
-       
+        lockManager.DotSet(this);
         
     }
-
+  
 }
