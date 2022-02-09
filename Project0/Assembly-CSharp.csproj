@@ -57,8 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\LockController.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\LockManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\ObjectPooling.cs" />
+    <Compile Include="Assets\Scripts\TrashManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -5,6 +5,7 @@ using UnityEngine;
 public class LockManager : MonoBehaviour
 {
     public bool isLock;
+    public int size;
     public GameObject[] dotsNew;
    
     public void DotSet(LockController a)
@@ -22,6 +23,7 @@ public class LockManager : MonoBehaviour
     }
     IEnumerator SetData(LockController a)
     {
+        PlayerController.Instance.dots = dotsNew;
         a.isLock = true;
         isLock = true;
         if (a.isLock)

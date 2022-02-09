@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public float PlayerSpeed;
     public   bool isControlDot;
     LockManager lockController;
-
      void Awake()
     {
         Instance = this;
@@ -25,9 +24,9 @@ public class PlayerController : MonoBehaviour
         currentDotPosition = dots[0].transform;
         isControlDot = true;
         lockController.isLock = false;
-       
+      
     }
-    
+
     void Update()
     {
        
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
         if (lockController.isLock == true)
         {
            
-            ControlLock();
+           
             Debug.Log(isControlDot);
             Debug.Log(controldotIndex);
             pos = currentDotPosition.position - transform.position;
@@ -57,6 +56,7 @@ public class PlayerController : MonoBehaviour
             {
                 NextDot();
             }
+            ControlLock();
         }
        
     }
@@ -70,11 +70,13 @@ public class PlayerController : MonoBehaviour
             isControlDot = false;
             Debug.Log(isControlDot);
             return;
+
             
 
         }
         controldotIndex++; // 1 // 2
         currentDotPosition = dots[controldotIndex].transform;
+       // Destroy(dots[controldotIndex - 1].gameObject);
                 
     }
     void ControlLock()
@@ -83,13 +85,21 @@ public class PlayerController : MonoBehaviour
         {     
             controldotIndex = 0;
             isControlDot = true;
+
             currentDotPosition = dots[0].transform;
-            Debug.Log(isControlDot);
-           
-            
+            Debug.Log(isControlDot);          
+
         }
 
-
+        
 
     }
+
+  /*  IEnumerator delay()
+    {
+       
+        yield return new WaitForSeconds(0.1f);
+        currentDotPosition = dots[0].transform;
+    }
+  */
 }

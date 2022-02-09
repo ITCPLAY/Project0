@@ -18,20 +18,22 @@ public class LockController : MonoBehaviour
     }
      void Update()
     {
-        if (isLock)
+        //if (isLock)
            // playerController.dots = lockDot;
-        PlayerController.Instance.dots = lockDot;
+       // PlayerController.Instance.dots = lockDot;
     }
     void OnMouseDown()
     {       
         // Lock mantýðý gelecek.        
-        for (int i = 0; i < lockDot.Length; i++)
-        {
-            lockManager.dotsNew[i] = lockDot[i];
-            
-        }
+       
+        
+            lockManager.dotsNew = lockDot;
+           
+        
         lockManager.DotSet(this);
         
     }
+
+    
   
 }
