@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooling 
+public class ObjectPooling
 {
-   private GameObject player_prefab;
+    private GameObject player_prefab;
     private Stack<GameObject> objectPooling = new Stack<GameObject>();
-   
+
     public ObjectPooling(GameObject player_prefab)
     {
         this.player_prefab = player_prefab;
     }
-   
+
     public void SetPool(int num)
     {
         for (int i = 0; i < num; i++)
@@ -37,13 +37,17 @@ public class ObjectPooling
 
     public void PushPooling(GameObject obje)
     {
-       
+
+
         obje.gameObject.SetActive(false);
         objectPooling.Push(obje);
-      
-        
+        Debug.Log(objectPooling.Count);
+
+
+
+
     }
-   
+
 }
 
 

@@ -7,6 +7,7 @@ public class LockManager : MonoBehaviour
     public bool isLock;
     public int size;
     public GameObject[] dotsNew;
+    public bool[] LockSystems;
 
     public void DotSet(LockController a)
     {
@@ -29,7 +30,7 @@ public class LockManager : MonoBehaviour
         if (a.isLock)
         {
             // Destroy(gameObject);
-            Debug.Log("Destroy");
+          //  Debug.Log("Destroy");
 
         }
         yield return new WaitForSeconds(0.3f);

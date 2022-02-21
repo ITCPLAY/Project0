@@ -5,11 +5,12 @@ using System.Collections.Generic;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject prefab;
+    private Stack<GameObject> PlayerStack = new Stack<GameObject>();
     private ObjectPooling pooling;
     public GameObject spawn1, spawn2;
     public int nwChoose, nwNum,currentCount;
     PlayerController playerController;
-   // GameObject obje;
+    GameObject obje;
    
     void Start()
     {
@@ -29,7 +30,7 @@ public class SpawnManager : MonoBehaviour
     void Update()
     {
         // Debug.Log(PlayerController.Instance.player_Count);
-        Debug.Log("Trash gelen " + nwChoose);
+       // Debug.Log("Trash gelen " + nwChoose);
         
 
     }
@@ -40,16 +41,11 @@ public class SpawnManager : MonoBehaviour
             var a = Random.Range(spawn1.transform.position.x, spawn2.transform.position.x);
             var b = Random.Range(spawn1.transform.position.z, spawn2.transform.position.z);
             Vector3 konum = new Vector3(a, PlayerController.Instance.transform.position.y, b);
-            GameObject obje = pooling.PopPooling();
+            obje = pooling.PopPooling();
             obje.transform.position = konum;
             obje.transform.parent = gameObject.transform;
+            PlayerStack.Push(obje);
 
-            
-         
-            // pooling.PushPooling(obje);
-            // 1 saniye sonra destroy ediyor bu trash'e göre düzenlenecek. 
-            // Sadece cikarma ve bolmede yapacak.
-        
 
 
     }
@@ -70,7 +66,6 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < nwNum; i++)
                 {
                     Debug.Log(PlayerController.Instance.player_Count);
-                    // StartCoroutine(CreateObject());
                     CreateObject();
                     Debug.Log("girdi");
                     
@@ -78,13 +73,11 @@ public class SpawnManager : MonoBehaviour
                 break;
             case 2:
                 PlayerController.Instance.player_Count -= nwNum;
+
                 for (int i = 0; i < nwNum; i++)
                 {
-                    
-                   // pooling.PushPooling(obje);
-                  
-                    Debug.Log("Destroy ediliyorrr");
-                 
+                    pooling.PushPooling(PlayerStack.Pop());
+               
                 }
 
                 break;
@@ -93,17 +86,19 @@ public class SpawnManager : MonoBehaviour
                 PlayerController.Instance.player_Count *= nwNum;
                 for (int i = currentCount; i < PlayerController.Instance.player_Count; i++)
                 {
-                    // StartCoroutine(CreateObject());
+                  
                     CreateObject();
                 }
                 break;
             case 4:
-                PlayerController.Instance.player_Count /= nwNum;
+               currentCount = PlayerController.Instance.player_Count / nwNum;
+                PlayerController.Instance.player_Count -= currentCount;
                 for (int i = 0; i < PlayerController.Instance.player_Count; i++)
                 {
-                   // pooling.PushPooling(obje);
+                    pooling.PushPooling(PlayerStack.Pop());
 
                 }
+                PlayerController.Instance.player_Count = currentCount;
                 break;
             case 5:
             default:

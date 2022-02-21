@@ -18,7 +18,7 @@ public class TrashManager : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(isTrigger);
+       // Debug.Log(isTrigger);
         updtýnf();
         
     }

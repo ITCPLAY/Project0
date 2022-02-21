@@ -49,8 +49,8 @@ public class PlayerController : MonoBehaviour
         {
 
 
-            Debug.Log(isControlDot);
-            Debug.Log(controldotIndex);
+           // Debug.Log(isControlDot);
+           // Debug.Log(controldotIndex);
             pos = currentDotPosition.position - transform.position;
             transform.Translate(pos.normalized * PlayerSpeed * Time.deltaTime, Space.World);
 
@@ -68,9 +68,9 @@ public class PlayerController : MonoBehaviour
 
         if (controldotIndex >= dots.Length - 1) // 2
         {
-            Debug.Log("false dödün");
+           // Debug.Log("false dödün");
             isControlDot = false;
-            Debug.Log(isControlDot);
+           // Debug.Log(isControlDot);
             return;
         }
         controldotIndex++; // 1 // 2
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             isControlDot = true;
 
             currentDotPosition = dots[0].transform;
-            Debug.Log(isControlDot);
+           // Debug.Log(isControlDot);
 
         }
     }

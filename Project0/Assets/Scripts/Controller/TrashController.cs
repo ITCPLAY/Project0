@@ -29,7 +29,7 @@ public class TrashController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             trashManager.isTrigger = true;
-            Debug.Log("Trigger Girdi: ");
+           // Debug.Log("Trigger Girdi: ");
             
             spawnManager.LogicalChoices();
 
