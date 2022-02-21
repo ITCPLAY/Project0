@@ -56,12 +56,14 @@
     <Analyzer Include="D:\VsYeni\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\LockController.cs" />
-    <Compile Include="Assets\Scripts\LockManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\SpawnManager.cs" />
-    <Compile Include="Assets\Scripts\ObjectPooling.cs" />
-    <Compile Include="Assets\Scripts\TrashManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\ObjectPooling.cs" />
+    <Compile Include="Assets\Scripts\Controller\LockController.cs" />
+    <Compile Include="Assets\Scripts\Manager\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Controller\PlayerBasic.cs" />
+    <Compile Include="Assets\Scripts\Manager\LockManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Controller\TrashController.cs" />
+    <Compile Include="Assets\Scripts\Manager\TrashManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -654,6 +656,12 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

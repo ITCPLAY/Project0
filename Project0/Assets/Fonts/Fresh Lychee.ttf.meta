@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: eb491404a34d71d4287232cc3b462b93
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Fresh Lychee
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 415df6c4ca87f3f408de8600ae49de36, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
