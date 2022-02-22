@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    int currentScene;
     public static PlayerController Instance;
     public GameObject[] dots;
     int controldotIndex = 0;
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-
+        currentScene = PlayerPrefs.GetInt("ReachLevel", 1);
         currentDotPosition = dots[0].transform;
         isControlDot = true;
         lockController.isLock = false;
@@ -89,5 +90,17 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+
+    public void GoNextLevel()
+    {
+        if (currentScene == SceneManager.GetActiveScene().buildIndex)
+        {
+            PlayerPrefs.SetInt("ReachLevel", currentScene + 1);
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+       
+    }
+
 
 }
