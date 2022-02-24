@@ -7,7 +7,7 @@ public class LockManager : MonoBehaviour
     public bool isLock;
     public int size;
     public GameObject[] dotsNew;
-    public bool[] LockSystems;
+   public  int Current_Grade=0;
 
     public void DotSet(LockController a)
     {

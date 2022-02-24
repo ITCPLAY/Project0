@@ -27,14 +27,7 @@ public class SpawnManager : MonoBehaviour
        
     }
 
-    void Update()
-    {
-        // Debug.Log(PlayerController.Instance.player_Count);
-       // Debug.Log("Trash gelen " + nwChoose);
-        
-
-    }
-
+    
     public void CreateObject()
     {
             
@@ -82,7 +75,7 @@ public class SpawnManager : MonoBehaviour
 
                 break;
             case 3:
-                currentCount = PlayerController.Instance.player_Count; // Bir önceki player sayýmýzý tutuyoruz ki kaç obje üreteceðimizi kontrol edelim.
+                currentCount = PlayerController.Instance.player_Count; 
                 PlayerController.Instance.player_Count *= nwNum;
                 for (int i = currentCount; i < PlayerController.Instance.player_Count; i++)
                 {

@@ -48,10 +48,6 @@ public class PlayerController : MonoBehaviour
 
         if (lockController.isLock == true)
         {
-
-
-           // Debug.Log(isControlDot);
-           // Debug.Log(controldotIndex);
             pos = currentDotPosition.position - transform.position;
             transform.Translate(pos.normalized * PlayerSpeed * Time.deltaTime, Space.World);
 
@@ -67,16 +63,16 @@ public class PlayerController : MonoBehaviour
     void NextDot()
     {
 
-        if (controldotIndex >= dots.Length - 1) // 2
+        if (controldotIndex >= dots.Length - 1)
         {
-           // Debug.Log("false dödün");
+
             isControlDot = false;
-           // Debug.Log(isControlDot);
+
             return;
         }
-        controldotIndex++; // 1 // 2
+        controldotIndex++;
         currentDotPosition = dots[controldotIndex].transform;
-        // Destroy(dots[controldotIndex - 1].gameObject);         
+
     }
     void ControlLock()
     {
@@ -86,7 +82,6 @@ public class PlayerController : MonoBehaviour
             isControlDot = true;
 
             currentDotPosition = dots[0].transform;
-           // Debug.Log(isControlDot);
 
         }
     }
@@ -99,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-       
+
     }
 
 

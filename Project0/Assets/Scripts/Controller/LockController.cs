@@ -7,35 +7,38 @@ public class LockController : MonoBehaviour
 {
 
     public bool isLock;
-    public GameObject[] lockDot,System;
+    public GameObject[] lockDot;
     LockManager lockManager;
     public int Counter;
+    SystemManager systemManager;
     void Start()
     {
         lockManager = GetComponentInParent<LockManager>();
+        systemManager = GetComponentInParent<SystemManager>();
         isLock = false;
     }
     void OnMouseDown()
     {
-        // Lock mantýðý gelecek.        
-
-       /* if (lockManager.LockSystems[0] == true || lockManager.LockSystems[1] == true)
+        // Lock Systems.        
+        for (int i = 0; i < systemManager.Systems.Length; i++)
         {
-            return;
+            if (systemManager.Systems[i] == true)
+            {
+                return;
+            }
         }
-        if (Counter == 0)
+        if (lockManager.Current_Grade == systemManager.grade)
         {
-            lockManager.LockSystems[0] = true;
+            systemManager.Systems[Counter] = true;
+            lockManager.Current_Grade++;
 
+            lockManager.dotsNew = lockDot;
+
+
+            lockManager.DotSet(this);
         }
-        else
-        {
-            lockManager.LockSystems[1]=true;
-        }*/
-        lockManager.dotsNew = lockDot;
-
-
-        lockManager.DotSet(this);
+             
+       
 
     }
    

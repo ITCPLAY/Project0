@@ -6,9 +6,9 @@ public class TrashController : MonoBehaviour
 {
     SpawnManager spawnManager;
     TrashManager trashManager;
-     public  int Choose;
-     public int Num;
-     void Awake()
+    public int Choose;
+    public int Num;
+    void Awake()
     {
         spawnManager = FindObjectOfType<SpawnManager>();
     }
@@ -16,12 +16,12 @@ public class TrashController : MonoBehaviour
     void Start()
     {
         trashManager = GetComponentInParent<TrashManager>();
-       
+
     }
     private void Update()
     {
         UpdateInformation();
-        
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -29,8 +29,6 @@ public class TrashController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             trashManager.isTrigger = true;
-           // Debug.Log("Trigger Girdi: ");
-            
             spawnManager.LogicalChoices();
 
 
@@ -43,7 +41,7 @@ public class TrashController : MonoBehaviour
         StartCoroutine(DelayDestroy());
     }
 
-     void UpdateInformation()
+    void UpdateInformation()
     {
         trashManager.choosee = Choose;
         trashManager.num = Num;
