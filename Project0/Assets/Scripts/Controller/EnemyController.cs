@@ -5,23 +5,36 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     EnemyManager enemyManager;
-    public NavMeshAgent enemy;
-    [SerializeField] Transform Player;
+   // public  NavMeshAgent enemy;
     Animator animator;
+   
     void Start()
     {
         enemyManager = GetComponentInParent<EnemyManager>();
         animator = GetComponent<Animator>();
     }
 
-    
+    private void Update()
+    {
+       // FollowPlayer();
+    }
 
     public void FollowPlayer()
     {
-
+         
         animator.SetBool("isIdle", false);
         animator.SetBool("isRun", true);
-        enemy.SetDestination(Player.position);
+
+        // enemyManager.enemyPrefab[i]
+          for (int i = 0; i < enemyManager.Enemy_Number; i++)
+          {
+            // enemy.SetDestination(enemyManager.Player[0].transform.position);
+            enemyManager.enemyNav[i].SetDestination(enemyManager.Player[i].transform.position);
+             
+          }
+
+
+      
 
 
     }
@@ -32,6 +45,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+            enemyManager.Enemy_Number--;
             Debug.Log("Dead");
         }
     }

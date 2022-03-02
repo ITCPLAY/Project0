@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     Transform currentDotPosition;
     Vector3 pos;
     public float PlayerSpeed;
-    public bool isControlDot;
+    public bool isControlDot,isStart;
     LockManager lockController;
     public int player_Count;
 
@@ -33,30 +33,35 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-
-        if (isControlDot)
+        if (isStart == true)
         {
 
-            pos = currentDotPosition.position - transform.position;
-            transform.Translate(pos.normalized * PlayerSpeed * Time.deltaTime, Space.World);
-
-            if (Vector3.Distance(transform.position, currentDotPosition.position) <= .1f)
+            if (isControlDot)
             {
-                NextDot();
+
+                pos = currentDotPosition.position - transform.position;
+                transform.Translate(pos.normalized * PlayerSpeed * Time.deltaTime, Space.World);
+
+                if (Vector3.Distance(transform.position, currentDotPosition.position) <= .1f)
+                {
+                    NextDot();
+                }
             }
-        }
 
-        if (lockController.isLock == true)
-        {
-            pos = currentDotPosition.position - transform.position;
-            transform.Translate(pos.normalized * PlayerSpeed * Time.deltaTime, Space.World);
-
-            if (Vector3.Distance(transform.position, currentDotPosition.position) <= .1f)
+            if (lockController.isLock == true)
             {
-                NextDot();
+                pos = currentDotPosition.position - transform.position;
+                transform.Translate(pos.normalized * PlayerSpeed * Time.deltaTime, Space.World);
+
+                if (Vector3.Distance(transform.position, currentDotPosition.position) <= .1f)
+                {
+                    NextDot();
+                }
+                ControlLock();
             }
-            ControlLock();
+
         }
+       
 
     }
 

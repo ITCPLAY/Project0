@@ -62,13 +62,15 @@
     <Compile Include="Assets\Scripts\Manager\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\Controller\PlayerBasic.cs" />
     <Compile Include="Assets\Scripts\Manager\LockManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\Scripts\Controller\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Manager\EnemyManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Vibration.cs" />
     <Compile Include="Assets\Scripts\Manager\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Controller\TrashController.cs" />
     <Compile Include="Assets\Scripts\Manager\TrashManager.cs" />
     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
+    <Compile Include="Assets\Scripts\Game\ChangeMaterial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sprites\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -25,18 +25,36 @@ public class PlayerBasic : MonoBehaviour
 
     private void AnimatorControl()
     {
-        if (PlayerController.isControlDot == true)
-        {
-            animator.SetBool("isRunning", true);
-            animator.SetBool("isIdle", false);
-
-        }
-        else 
+        if (PlayerController.Instance.isStart == false)
         {
             animator.SetBool("isRunning", false);
             animator.SetBool("isIdle", true);
         }
-       
+        else
+        {
+            if (PlayerController.isControlDot == true)
+            {
+                animator.SetBool("isRunning", true);
+                animator.SetBool("isIdle", false);
+
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+                animator.SetBool("isIdle", true);
+            }
+        }
+        
+          
+
+
+          
+
+
+
+
+
+
 
 
 
