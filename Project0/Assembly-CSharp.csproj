@@ -58,11 +58,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Manager\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Manager\ObjectPooling.cs" />
+    <Compile Include="Assets\Scripts\Game\ChangeMaterial.cs" />
     <Compile Include="Assets\Scripts\Controller\LockController.cs" />
     <Compile Include="Assets\Scripts\Manager\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\Controller\PlayerBasic.cs" />
     <Compile Include="Assets\Scripts\Manager\LockManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
+    <Compile Include="Assets\Scripts\Utility\HierarchyHighlighter.cs" />
     <Compile Include="Assets\Scripts\Controller\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Manager\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\Game\Vibration.cs" />
@@ -70,7 +72,7 @@
     <Compile Include="Assets\Scripts\Controller\TrashController.cs" />
     <Compile Include="Assets\Scripts\Manager\TrashManager.cs" />
     <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Game\ChangeMaterial.cs" />
+    <Compile Include="Assets\Scripts\Controller\AreaController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sprites\TextMesh Pro\Shaders\TMPro.cginc" />

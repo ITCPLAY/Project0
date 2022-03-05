@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject prefab;
-    private Stack<GameObject> PlayerStack = new Stack<GameObject>();
+    public Stack<GameObject> PlayerStack = new Stack<GameObject>();
     public ArrayList arrayPlayer = new ArrayList();
     private ObjectPooling pooling;
     public GameObject spawn1, spawn2;
     public int nwChoose, nwNum, currentCount,tempAry;
     PlayerController playerController;
     GameObject obje;
-    private int j;
+    
 
     void Start()
     {
@@ -25,16 +25,13 @@ public class SpawnManager : MonoBehaviour
 
             CreateObject();
             StacktoArrayControl();
-        }
-        Debug.Log(arrayPlayer.Count);
-       
+        }    
     }
     private void Update()
     {
-       // Debug.Log(arrayPlayer.Count);
         tempAry = arrayPlayer.Count;
         Debug.Log(tempAry);
-        ///Debug.Log(arrayPlayer[4]);
+      
     }
 
     public void CreateObject()
@@ -47,12 +44,9 @@ public class SpawnManager : MonoBehaviour
         obje.transform.position = konum;
         obje.transform.parent = gameObject.transform;
         PlayerStack.Push(obje);
-
-
-
     }
 
-
+    #region LogicalChoises  
     public void LogicalChoices()
     {
         // 1 = Addition
@@ -80,7 +74,7 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < nwNum; i++)
                 {
                     pooling.PushPooling(PlayerStack.Pop());
-                    arrayPlayer.RemoveRange(tempAry-nwNum,nwNum);
+                    arrayPlayer.RemoveRange((tempAry - nwNum), nwNum);
 
                 }
 
@@ -101,9 +95,10 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < PlayerController.Instance.player_Count; i++)
                 {
                     pooling.PushPooling(PlayerStack.Pop());
-                    arrayPlayer.RemoveRange(tempAry - PlayerController.Instance.player_Count, PlayerController.Instance.player_Count);
+                    arrayPlayer.RemoveRange((tempAry - PlayerController.Instance.player_Count), PlayerController.Instance.player_Count);
 
                 }
+                
                 PlayerController.Instance.player_Count = currentCount;
                 break;
             case 5:
@@ -113,6 +108,8 @@ public class SpawnManager : MonoBehaviour
         }
 
     }
+    #endregion
+
 
     public void StacktoArrayControl()
     {
@@ -121,6 +118,9 @@ public class SpawnManager : MonoBehaviour
         
     }
   
-
+    public void CalledDestroy()
+    {
+        pooling.PushPooling(PlayerStack.Pop());
+    }
 
 }

@@ -5,48 +5,39 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     EnemyManager enemyManager;
-   // public  NavMeshAgent enemy;
     Animator animator;
-   
+    public ParticleSystem Deat_PS;
     void Start()
     {
         enemyManager = GetComponentInParent<EnemyManager>();
         animator = GetComponent<Animator>();
+       
     }
 
-    private void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-       // FollowPlayer();
-    }
-
-    public void FollowPlayer()
-    {
-         
-        animator.SetBool("isIdle", false);
-        animator.SetBool("isRun", true);
-
-        // enemyManager.enemyPrefab[i]
-          for (int i = 0; i < enemyManager.Enemy_Number; i++)
-          {
-            // enemy.SetDestination(enemyManager.Player[0].transform.position);
-            enemyManager.enemyNav[i].SetDestination(enemyManager.Player[i].transform.position);
-             
-          }
-
-
-      
-
-
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player1")
         {
-            Destroy(gameObject);
-            enemyManager.Enemy_Number--;
-            Debug.Log("Dead");
+
+            // Destroy(gameObject);
+            Death();
+          
+            
         }
+        
+    }
+
+
+
+    public void Death()
+    {
+        
+        Instantiate(Deat_PS, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+        
+       
     }
 }
+
+  
+

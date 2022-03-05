@@ -45,10 +45,5 @@ public class LockController : MonoBehaviour
             animator.SetBool("isAnim", true);
         }
              
-       
-
     }
-   
-
-
 }

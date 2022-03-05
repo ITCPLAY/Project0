@@ -6,14 +6,15 @@ public class PlayerBasic : MonoBehaviour
 {
 
     PlayerController PlayerController;
-    LockManager lockManager;
+    SpawnManager spawnManager;
     Animator animator;
-   
+    public ParticleSystem Death_PS_player;
    
     void Start()
     {
         animator = GetComponent<Animator>();
         PlayerController = GetComponentInParent<PlayerController>();
+        spawnManager = FindObjectOfType<SpawnManager>();
     }
 
    
@@ -44,19 +45,31 @@ public class PlayerBasic : MonoBehaviour
                 animator.SetBool("isIdle", true);
             }
         }
-        
-          
-
-
-          
-
-
-
-
-
-
-
-
-
+       
     }
+
+    #region Death Functions
+
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+
+            Death_Player();
+            Debug.Log("Pushluyor");
+
+        }
+    }
+
+    public void Death_Player()
+    {
+        Instantiate(Death_PS_player, transform.position, Quaternion.identity);
+        spawnManager.CalledDestroy();
+        PlayerController.player_Count--;
+    }
+
+
+    #endregion
+
 }

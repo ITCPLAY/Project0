@@ -7,8 +7,13 @@ public class UIManager : MonoBehaviour
 
     public GameObject levelPanel;
     [SerializeField] GameObject startText;
+    [SerializeField] Text playerNumberText,enemyNumberText;
+    EnemyManager enemyManager;
 
-
+    private void Awake()
+    {
+        enemyManager = FindObjectOfType<EnemyManager>();
+    }
     private void Start()
     {
         startText.SetActive(true);
@@ -25,6 +30,8 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         StartControl();
+        playerNumberText.text = PlayerController.Instance.player_Count.ToString();
+        enemyNumberText.text = enemyManager.enemyCount.ToString();
     }
 
 

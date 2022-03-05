@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     Transform currentDotPosition;
     Vector3 pos;
     public float PlayerSpeed;
-    public bool isControlDot,isStart;
+    public bool isControlDot,isStart,isArena;
     LockManager lockController;
     public int player_Count;
 
@@ -102,5 +102,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    
+    
 
 }
