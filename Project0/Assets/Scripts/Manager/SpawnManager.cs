@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
     {
         tempAry = arrayPlayer.Count;
         Debug.Log(tempAry);
-        Debug.Log(arrayPlayer.Capacity);
+      
     }
 
     public void CreateObject()
@@ -74,7 +74,7 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < nwNum; i++)
                 {
                     pooling.PushPooling(PlayerStack.Pop());
-                    arrayPlayer.RemoveRange(tempAry - nwNum, nwNum);
+                    arrayPlayer.RemoveRange((tempAry - nwNum), nwNum);
 
                 }
 
@@ -95,7 +95,7 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < PlayerController.Instance.player_Count; i++)
                 {
                     pooling.PushPooling(PlayerStack.Pop());
-                    arrayPlayer.RemoveRange(tempAry - PlayerController.Instance.player_Count, PlayerController.Instance.player_Count);
+                    arrayPlayer.RemoveRange((tempAry - PlayerController.Instance.player_Count), PlayerController.Instance.player_Count);
 
                 }
                 

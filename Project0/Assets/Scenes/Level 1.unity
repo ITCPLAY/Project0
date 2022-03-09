@@ -4822,7 +4822,7 @@ MonoBehaviour:
   isControlDot: 0
   isStart: 0
   isArena: 0
-  player_Count: 10
+  player_Count: 20
 --- !u!114 &1440479303
 MonoBehaviour:
   m_ObjectHideFlags: 0
