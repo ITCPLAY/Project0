@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.AI;
 public class PlayerController : MonoBehaviour
 {
     int currentScene;
@@ -14,12 +14,16 @@ public class PlayerController : MonoBehaviour
     public float PlayerSpeed;
     public bool isControlDot,isStart,isArena;
     LockManager lockController;
+    EnemyManager enemyManager;
     public int player_Count;
+    public NavMeshAgent[] playerNav;
+    
 
     void Awake()
     {
         Instance = this;
         lockController = FindObjectOfType<LockManager>();
+        enemyManager = FindObjectOfType<EnemyManager>();
     }
     void Start()
     {
@@ -32,6 +36,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (isArena == true)
+        {
+            PlayerDestinationControl();
+            EnemyFollow();
+        }
 
         if (isStart == true)
         {
@@ -61,6 +70,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+      
        
 
     }
@@ -102,7 +112,28 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void PlayerDestinationControl()
+    {
+        if (isArena == true)
+        {
+            for (int i = 0; i < player_Count; i++)
+            {
+                playerNav[i] = enemyManager.Player[i].GetComponent<NavMeshAgent>();
+            }
+        }
+
+    }
     
-    
+    public void EnemyFollow()
+    {
+        for (int i = 0; i < enemyManager.Enemy_Number; i++)
+        {
+            if(player_Count > 0 && enemyManager.Enemy_Number > 0)
+            {
+                 playerNav[i].SetDestination(enemyManager.enemyPrefab[i].transform.position);
+                
+            }
+        }
+    }
 
 }

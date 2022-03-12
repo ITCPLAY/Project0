@@ -18,18 +18,18 @@ public class TrashController : MonoBehaviour
         trashManager = GetComponentInParent<TrashManager>();
 
     }
-    private void Update()
-    {
-        UpdateInformation();
 
-    }
 
     public void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "Player")
         {
+
             trashManager.isTrigger = true;
-            spawnManager.LogicalChoices();
+            //spawnManager.LogicalChoices();
+            UpdateInformation();
+            StartCoroutine(SpawnDelay());
 
 
         }
@@ -43,8 +43,11 @@ public class TrashController : MonoBehaviour
 
     void UpdateInformation()
     {
+
         trashManager.choosee = Choose;
         trashManager.num = Num;
+
+
     }
 
     IEnumerator DelayDestroy()
@@ -54,6 +57,11 @@ public class TrashController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    IEnumerator SpawnDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        spawnManager.LogicalChoices();
+    }
 
 
 }
