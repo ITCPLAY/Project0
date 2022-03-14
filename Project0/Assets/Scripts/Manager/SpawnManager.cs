@@ -9,10 +9,10 @@ public class SpawnManager : MonoBehaviour
     public ArrayList arrayPlayer = new ArrayList();
     private ObjectPooling pooling;
     public GameObject spawn1, spawn2;
-    public int nwChoose, nwNum, currentCount,tempAry;
+    public int nwChoose, nwNum, currentCount, tempAry;
     PlayerController playerController;
     GameObject obje;
-    
+
 
     void Start()
     {
@@ -25,13 +25,13 @@ public class SpawnManager : MonoBehaviour
 
             CreateObject();
             StacktoArrayControl();
-        }    
+        }
     }
     private void Update()
     {
         tempAry = arrayPlayer.Count;
         Debug.Log(tempAry);
-      
+
     }
 
     public void CreateObject()
@@ -74,9 +74,10 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < nwNum; i++)
                 {
                     pooling.PushPooling(PlayerStack.Pop());
-                    arrayPlayer.RemoveRange((tempAry - nwNum), nwNum);
+
 
                 }
+                arrayPlayer.RemoveRange((tempAry - nwNum), nwNum);
 
                 break;
             case 3:
@@ -95,10 +96,10 @@ public class SpawnManager : MonoBehaviour
                 for (int i = 0; i < PlayerController.Instance.player_Count; i++)
                 {
                     pooling.PushPooling(PlayerStack.Pop());
-                    arrayPlayer.RemoveRange((tempAry - PlayerController.Instance.player_Count), PlayerController.Instance.player_Count);
+
 
                 }
-                
+                arrayPlayer.RemoveRange((tempAry - PlayerController.Instance.player_Count), PlayerController.Instance.player_Count);
                 PlayerController.Instance.player_Count = currentCount;
                 break;
             case 5:
@@ -114,10 +115,10 @@ public class SpawnManager : MonoBehaviour
     public void StacktoArrayControl()
     {
         arrayPlayer.Add(obje);
-        
-        
+
+
     }
-  
+
     public void CalledDestroy()
     {
         pooling.PushPooling(PlayerStack.Pop());
