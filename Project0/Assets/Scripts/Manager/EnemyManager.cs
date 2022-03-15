@@ -7,18 +7,20 @@ public class EnemyManager : MonoBehaviour
 
     public GameObject SpawnPoint1, SpawnPoint2;
     [SerializeField] private GameObject prefab;
-    [SerializeField] public int Enemy_Number;
+     public int Enemy_Number;
     [SerializeField] public GameObject[] Player;
     public ArrayList Playerarray = new ArrayList();
     public GameObject[] enemyPrefab;
     public NavMeshAgent[] enemyNav;
     SpawnManager spawnManager;
+    EnemyController enemyController;
     public int enemyCount;
     
 
     void Start()
     {
         spawnManager = FindObjectOfType<SpawnManager>();
+        enemyController = FindObjectOfType<EnemyController>();
         CreateEnemy();
         enemyCount = Enemy_Number;
     }
@@ -26,7 +28,7 @@ public class EnemyManager : MonoBehaviour
     private void Update()
     {
 
-
+        Debug.Log("Enemy Count :" + enemyCount);
         if (PlayerController.Instance.isArena == true)
         {
 
@@ -34,9 +36,10 @@ public class EnemyManager : MonoBehaviour
             EnemyDestinationControl();
             FollowPlayer();
 
-
+           
 
         }
+       
 
     }
 
@@ -95,6 +98,7 @@ public class EnemyManager : MonoBehaviour
 
     public void EnemyNumberControl()
     {
+
         enemyCount--;
 
     }

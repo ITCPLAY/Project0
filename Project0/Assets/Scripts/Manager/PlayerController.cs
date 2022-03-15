@@ -111,6 +111,10 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     public void PlayerDestinationControl()
     {
