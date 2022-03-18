@@ -6,23 +6,28 @@ using UnityEngine;
 public class LockController : MonoBehaviour
 {
 
-    public bool isLock,Click;
+    public bool isLock, Click, vibration;
     public GameObject[] lockDot;
     LockManager lockManager;
     public int Counter;
     SystemManager systemManager;
     Animator animator;
 
+
     void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        Debug.Log(vibration);
     }
     void Start()
     {
         lockManager = GetComponentInParent<LockManager>();
         systemManager = GetComponentInParent<SystemManager>();
         isLock = false;
-      
+
     }
     void OnMouseDown()
     {
@@ -38,12 +43,17 @@ public class LockController : MonoBehaviour
         {
             systemManager.Systems[Counter] = true;
             lockManager.Current_Grade++;
-            Vibration.Vibrate(100); // Daha sonra kontrol  edilecek.
+           
+            if (!vibration)
+            {
+                Debug.Log("Vibrate");
+                Vibration.Vibrate(100);
+            }
             lockManager.dotsNew = lockDot;
             lockManager.DotSet(this);
             Click = true;
             animator.SetBool("isAnim", true);
         }
-             
+
     }
 }
