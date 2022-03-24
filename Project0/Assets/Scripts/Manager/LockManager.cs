@@ -29,8 +29,7 @@ public class LockManager : MonoBehaviour
         isLock = true;
         if (a.isLock)
         {
-            // Destroy(gameObject);
-          //  Debug.Log("Destroy");
+          
 
         }
         yield return new WaitForSeconds(0.3f);

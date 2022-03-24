@@ -7,20 +7,22 @@ public class EnemyManager : MonoBehaviour
 
     public GameObject SpawnPoint1, SpawnPoint2;
     [SerializeField] private GameObject prefab;
-     public int Enemy_Number;
-    [SerializeField] public GameObject[] Player;
+    SpawnManager spawnManager;
+    public int Enemy_Number;
+    public GameObject[] Player;
     public ArrayList Playerarray = new ArrayList();
     public GameObject[] enemyPrefab;
     public NavMeshAgent[] enemyNav;
-    SpawnManager spawnManager;
+    UIManager uIManager;
     EnemyController enemyController;
     public int enemyCount;
-    
+    public int controlEnemy = 0;
 
     void Start()
     {
         spawnManager = FindObjectOfType<SpawnManager>();
         enemyController = FindObjectOfType<EnemyController>();
+        uIManager = FindObjectOfType<UIManager>();
         CreateEnemy();
         enemyCount = Enemy_Number;
     }
@@ -28,19 +30,18 @@ public class EnemyManager : MonoBehaviour
     private void Update()
     {
 
-        Debug.Log("Enemy Count :" + enemyCount);
+        // Debug.Log("Enemy Count :" + enemyCount);
         if (PlayerController.Instance.isArena == true)
         {
-
-
-            EnemyDestinationControl();
-            FollowPlayer();
-
-           
+            //EnemyDestinationControl();
+            if (controlEnemy == 0)
+            {
+                FollowPlayer();
+            }
+            controlEnemy++;
 
         }
        
-
     }
 
     public void CreateEnemy()
@@ -60,6 +61,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (PlayerController.Instance.isArena == true)
         {
+            Player = new GameObject[spawnManager.tempAry];
             spawnManager.arrayPlayer.CopyTo(Player, 0);
             for (int i = 0; i < Enemy_Number; i++)
             {
@@ -67,7 +69,6 @@ public class EnemyManager : MonoBehaviour
                 enemyNav[i] = enemyPrefab[i].GetComponent<NavMeshAgent>();
 
             }
-
 
         }
 
@@ -79,20 +80,23 @@ public class EnemyManager : MonoBehaviour
         // animator.SetBool("isIdle", false);
         //animator.SetBool("isRun", true);
 
-        for (int i = 0; i < PlayerController.Instance.player_Count; i++)
+        for (int i = 0; i < Enemy_Number; i++)
         {
 
             if (PlayerController.Instance.player_Count > 0 && Enemy_Number > 0)
             {
-
+                if (enemyNav[i].isOnNavMesh == false)
+                {
+                    enemyNav[i].Warp(enemyPrefab[i].transform.position);
+                }
                 enemyNav[i].SetDestination(Player[i].transform.position);
 
 
             }
-
-
+           
+           
         }
-
+        
     }
 
 
@@ -103,6 +107,6 @@ public class EnemyManager : MonoBehaviour
 
     }
 
-    
-    
+
+
 }

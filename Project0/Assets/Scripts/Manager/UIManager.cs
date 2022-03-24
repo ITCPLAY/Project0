@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     public bool isFinish;
     [SerializeField] int x, y, z, w;
     public GameObject awesomeText, greatText, wonderfulText;
-    public int count = 0;
+    public int count, countLevelPanel = 0;
 
     private void Awake()
     {
@@ -45,9 +45,12 @@ public class UIManager : MonoBehaviour
         FinishControl();
         if (isFinish == true)
         {
-
-            LevelComplete();
-            GameOver();
+            if (countLevelPanel == 0)
+            {
+                StartCoroutine(LevelComplete());
+                StartCoroutine(GameOver());
+            }
+            countLevelPanel++;
         }
     }
 
@@ -62,23 +65,26 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void LevelComplete()
+    IEnumerator LevelComplete()
     {
         if (PlayerController.Instance.player_Count > enemyManager.enemyCount)
         {
             Debug.Log("Level Complete");
             // Time.timeScale = 0;
+            yield return new WaitForSeconds(1f);
             levelCompletePanel.SetActive(true);
+            
         }
     }
 
 
-    public void GameOver()
+    IEnumerator GameOver()
     {
         if (PlayerController.Instance.player_Count < enemyManager.enemyCount)
         {
             Debug.Log("Game Over");
             // Time.timeScale = 0;
+            yield return new WaitForSeconds(1f);
             gameOverPanel.SetActive(true);
         }
     }
@@ -88,6 +94,7 @@ public class UIManager : MonoBehaviour
     {
         if (PlayerController.Instance.player_Count == 0 || enemyManager.enemyCount == 0)
         {
+            PlayerController.Instance.isArena = false;
             isFinish = true;
 
         }

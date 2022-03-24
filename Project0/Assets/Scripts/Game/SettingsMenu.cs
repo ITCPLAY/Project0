@@ -81,12 +81,12 @@ public class SettingsMenu : MonoBehaviour
             for (int i = 0; i < itemsCount; i++)
             {
                 // menuItems[i].trans.position = mainButtonPosition;
-                menuItems[i].trans.DOMove(mainButtonPosition , collapseDuration).SetEase(collapseEase);
+                menuItems[i].trans.DOMove(mainButtonPosition, collapseDuration).SetEase(collapseEase);
                 menuItems[i].img.DOFade(0f, collapseFadeDuration);
             }
         }
-       
-       
+
+
     }
 
     public void OnItemClick(int index)

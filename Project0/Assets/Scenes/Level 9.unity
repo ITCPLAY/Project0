@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: d86ded249891f2c4babe20091607ff93, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 83449974ddc222c4b8740d7a0153d4eb, type: 2}
 --- !u!4 &25722632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4997766854127695609, guid: 11d217b443ee80441975d2bd87b79d54, type: 3}
@@ -3053,6 +3053,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemyCount: 0
+  controlEnemy: 0
 --- !u!114 &1757759417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4690,7 +4691,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4461454674618471358
 Transform:

@@ -30,7 +30,7 @@ public class SpawnManager : MonoBehaviour
     private void Update()
     {
         tempAry = arrayPlayer.Count;
-        Debug.Log(tempAry);
+        //   Debug.Log(tempAry);
 
     }
 

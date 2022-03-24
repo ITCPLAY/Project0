@@ -20,7 +20,7 @@ public class LockController : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(vibration);
+      //  Debug.Log(vibration);
     }
     void Start()
     {

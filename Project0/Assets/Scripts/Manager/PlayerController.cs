@@ -17,13 +17,15 @@ public class PlayerController : MonoBehaviour
     EnemyManager enemyManager;
     public int player_Count;
     public NavMeshAgent[] playerNav;
-    
+    SpawnManager spawnManager;
+    public int control = 0;
 
     void Awake()
     {
         Instance = this;
         lockController = FindObjectOfType<LockManager>();
         enemyManager = FindObjectOfType<EnemyManager>();
+        spawnManager = FindObjectOfType<SpawnManager>();
     }
     void Start()
     {
@@ -36,10 +38,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (isArena == true)
+        if (isArena == true )
         {
+            playerNav = new NavMeshAgent[spawnManager.tempAry];
             PlayerDestinationControl();
             EnemyFollow();
+            Debug.Log("enemy follow sonrasi");
+            
         }
 
         if (isStart == true)
@@ -120,6 +125,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isArena == true)
         {
+            enemyManager.EnemyDestinationControl();
             for (int i = 0; i < player_Count; i++)
             {
                 playerNav[i] = enemyManager.Player[i].GetComponent<NavMeshAgent>();
@@ -134,8 +140,15 @@ public class PlayerController : MonoBehaviour
         {
             if(player_Count > 0 && enemyManager.Enemy_Number > 0)
             {
-                 playerNav[i].SetDestination(enemyManager.enemyPrefab[i].transform.position);
-                
+               //  playerNav[i].SetDestination(enemyManager.enemyPrefab[i].transform.position);
+
+                if (playerNav[i].isOnNavMesh == false)
+                {
+                    playerNav[i].Warp(enemyManager.Player[i].transform.position);
+                }
+
+                playerNav[i].SetDestination(enemyManager.enemyPrefab[i].transform.position);
+
             }
         }
     }
